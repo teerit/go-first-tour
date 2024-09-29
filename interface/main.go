@@ -51,6 +51,24 @@ func measure(g geometry) {
 	fmt.Println(g.perim())
 }
 
+type MyInterface interface {
+	myInterface() string
+}
+
+type MyInterfaceImpl struct {
+	name string
+}
+
+func (m *MyInterfaceImpl) myInterface() string {
+	return "hello, " + m.name
+}
+
+func InitMyInterface(name string) *MyInterfaceImpl {
+	return &MyInterfaceImpl{
+		name: name,
+	}
+}
+
 func main() {
 	var userRepo UserRepository
 	userRepo = &MySQLUserRepository{}
@@ -61,4 +79,7 @@ func main() {
 
 	r := rect{width: 3, height: 5}
 	measure(r)
+
+	myInteface := InitMyInterface("toomtam")
+	fmt.Println(myInteface.myInterface())
 }
