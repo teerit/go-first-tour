@@ -2,21 +2,17 @@ package main
 
 import "fmt"
 
-func MultplicationTable(size int) [][]int {
-	var result [][]int
-	multiplier := 1
-	for i := 1; i <= size; i++ {
-		temp := []int{}
-		for j := 1; j <= size; j++ {
-			temp = append(temp, multiplier*j)
+func MultiplicationTable(size int) [][]int {
+	matrix := make([][]int, size)
+	for i := 0; i < size; i++ {
+		matrix[i] = make([]int, size)
+		for y := 0; y < size; y++ {
+			matrix[i][y] = (i + 1) * (y + 1)
 		}
-		result = append(result, temp)
-		multiplier++
 	}
-
-	return result
+	return matrix
 }
 
 func main() {
-	fmt.Println(MultplicationTable(3))
+	fmt.Println(MultiplicationTable(3))
 }
